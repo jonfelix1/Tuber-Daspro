@@ -10,6 +10,7 @@ type
         judul : packed array [1..50] of char;
         penulis: packed array [1..50] of char;
         kategori: packed array [1..100] of char;
+        tahun : integer;
    
 end;
 
