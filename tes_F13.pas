@@ -1,45 +1,30 @@
-program CSV_Data_Manipulation;
-uses Classes, SysUtils;
+procedure load;
+type
+  Buku = record
+    ID_Buku, Jumlah_Buku, Tahun_Penerbit : integer;
+    Judul_Buku, Author : string;
+    Kategori : string[sastra, sains, manga, sejarah,programming];
+  end;
 
-var s: string;
-    ts: tStringList;
-    inFile,
-    outFile: Text;
-    Sum: integer;
-    Number: string;
+  User = record
+    Nama, Alamat, Username, Password : string;
+    Role : string[Pengunjung, Admin];
+  end;
 
+  History_Peminjaman = record
+    Username
+    ID_Buku
+    Tanggal_Peminjaman
+    Tanggal_Batas_Pengembalian
+    Status_Pengembalian
+  History_Peminjaman
+    Username
+    ID_Buku
+    Tanggal_Pengembalian
+  Tanggal = record
+
+var
+  buku = array of Buku;
 begin
 
-  Assign(inFile,'input.csv');
-  Reset(inFile);
-
-  Assign(outFile,'result.csv');
-  Rewrite(outFile);
-
-  ts:=tStringList.Create;
-  ts.StrictDelimiter:=True;
-
-  // Handle the header
-  ReadLn(inFile,s);                     // Read a line from input file
-  ts.CommaText:=s;                      // Split it to lines
-  ts.Add('SUM');                        // Add a line
-  WriteLn(outFile,ts.CommaText);        // Reassemble it with comma as delimiter
-
-  // Handle the data
-  while not eof(inFile) do
-  begin
-    ReadLn(inFile,s);
-    ts.CommaText:=s;
-
-    Sum:=0;
-    for Number in ts do
-      Sum+=StrToInt(Number);
-
-    ts.Add('%D',[Sum]);
-
-    writeln(outFile, ts.CommaText);
-  end;
-  Close(outFile);
-  Close(inFile);
-  ts.Free;
-end.
+end;
