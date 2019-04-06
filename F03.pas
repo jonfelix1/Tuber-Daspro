@@ -16,7 +16,7 @@ end;
 
 var
     list : array [1..nmax] of buku;
-    i : integer;
+    i,result : integer;
     input : string;
 
 procedure print_buku( var bukua: buku);
@@ -47,6 +47,8 @@ begin
         tahun := 2010;
     end;
 
+    result := 0;
+
     while True do
         begin
             write('Masukan kategori: ');
@@ -61,8 +63,12 @@ begin
                         for i := 1 to nmax do 
                             begin
                                 if AnsiCompareStr(list[i].kategori, input) = 0 then
-                                    print_buku(list[i]);
+                                    begin
+                                        print_buku(list[i]);
+                                        result += 1;
+                                    end;
                             end;
+                        if result = 0 then writeln('Tidak ada buku dalam kategori ini.');
                         exit;
                     end
             else writeln('Kategori ', input, ' tidak valid.');
