@@ -53,16 +53,16 @@ begin
         begin
             write('Masukan kategori: ');
             read(input);
-            if  (AnsiCompareStr(input, 'sastra') = 0) or
-                (AnsiCompareStr(input, 'sains') = 0) or
-                (AnsiCompareStr(input, 'manga') = 0) or
-                (AnsiCompareStr(input, 'sejarah') = 0) or
-                (AnsiCompareStr(input, 'programming') = 0) then
+            if  (input = 'sastra') or
+                (input = 'sains') or
+                (input = 'manga')  or
+                (input = 'sejarah')  or
+                (input = 'programming') then
                     begin
                         writeln('Hasil pencarian :');
                         for i := 1 to nmax do 
                             begin
-                                if AnsiCompareStr(list[i].kategori, input) = 0 then
+                                if list[i].kategori = input then
                                     begin
                                         print_buku(list[i]);
                                         result += 1;
