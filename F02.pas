@@ -19,7 +19,7 @@ begin
 		readln(masuk.Pass); 
 		while ((count <= arrMax) and not(found)) do //arrMax adalah nilai banyaknya daftar akun yang terdaftar
 		begin //mencari apakah pasangan masukan benar
-			if (((akun.tab[count].Username) = masuk.Username) and ((akun.tab[count].Pass) = masuk.Pass)) then
+			if (((akun.tab[count].Username) = masuk.Username) and ((akun.tab[count].Password) = masuk.Pass)) then
 			begin
 				writeln('Selamat datang ', akun.tab[count].Username, '!');
 				found := true;
