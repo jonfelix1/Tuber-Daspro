@@ -12,6 +12,7 @@ type
         author: string;
         kategori: string;
         tahun_terbit : integer;
+        jumlah_buku : integer;
     end;
 
 var
