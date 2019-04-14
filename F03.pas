@@ -1,4 +1,4 @@
-unit F03;
+program F03;
 
 //Kamus
 
