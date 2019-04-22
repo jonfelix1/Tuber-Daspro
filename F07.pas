@@ -26,7 +26,7 @@ var
 
 //Prosedurnya
 
-procedure input(i : integer);
+procedure lapor_hilang(i : integer);
 //Kamus Lokal
 var
     temp : string;
@@ -50,7 +50,7 @@ end;
 
 begin
 data.neff := 0;
-input(1);
+lapor_hilang(1);
 end.
 
 
