@@ -130,6 +130,10 @@ if stock > 0 then
         temp_dd -= 30;
         temp_mm += 1;
         end;
+    
+    data3.arr[data3.neff].tanggal_batas_pengembalian.dd := temp_dd;
+    data3.arr[data3.neff].tanggal_batas_pengembalian.mm := temp_mm;
+    data3.arr[data3.neff].tanggal_batas_pengembalian.yyyy := temp_yyyy;
     end
 
 else
