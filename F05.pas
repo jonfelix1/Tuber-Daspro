@@ -46,7 +46,7 @@ var
 procedure pinjam_buku;
 //Kamus Lokal
 var
-    stock, i, temp_id, ec: integer;
+    stock, i, temp_id, ec, temp_dd, temp_mm, temp_yyyy: integer;
     found : boolean;
     temp_tanggal, judul_buku : string;
 
@@ -80,9 +80,56 @@ if stock > 0 then
     data1.arr[i].jumlah_buku -= 1;
     data3.neff += 1;
     data3.arr[data3.neff].id_buku := temp_id;
-    val(temp_tanggal[1] +  temp_tanggal[2], data3.arr[i].tanggal_peminjaman.dd, ec);
-    val(temp_tanggal[4] +  temp_tanggal[5], data3.arr[i].tanggal_peminjaman.mm, ec);
-    val(temp_tanggal[7] +  temp_tanggal[8] + temp_tanggal[9] + temp_tanggal[10], data3.arr[i].tanggal_peminjaman.yyyy, ec);
+    val(temp_tanggal[1] +  temp_tanggal[2], data3.arr[data3.neff].tanggal_peminjaman.dd, ec);
+    val(temp_tanggal[4] +  temp_tanggal[5], data3.arr[data3.neff].tanggal_peminjaman.mm, ec);
+    val(temp_tanggal[7] +  temp_tanggal[8] + temp_tanggal[9] + temp_tanggal[10], data3.arr[data3.neff].tanggal_peminjaman.yyyy, ec);
+    temp_dd := data3.arr[data3.neff].tanggal_peminjaman.dd + 7;
+    temp_mm := data3.arr[data3.neff].tanggal_peminjaman.mm;
+    temp_yyyy := data3.arr[data3.neff].tanggal_peminjaman.yyyy;
+
+    if  ((temp_mm = 1) or
+        (temp_mm = 3) or
+        (temp_mm = 5) or
+        (temp_mm = 7) or
+        (temp_mm = 8) or
+        (temp_mm = 10) or
+        (temp_mm = 12)) and
+        (temp_dd > 31) then
+            begin
+            temp_mm += 1;
+            temp_dd -= 31;
+            if temp_mm = 13 then
+                begin
+                temp_mm := 1;
+                temp_yyyy += 1;
+                end;
+            end
+
+
+    else if temp_mm = 2 then
+        begin
+        if (temp_yyyy mod 400 = 0) and (temp_dd > 29) then
+            begin
+            temp_dd -= 29;
+            temp_mm += 1;
+            end
+        else if (temp_yyyy mod 100 > 0) and (temp_yyyy mod 4 = 0) and (temp_dd > 29) then
+            begin
+            temp_dd -= 29;
+            temp_mm += 1;
+            end
+        else if temp_dd > 28 then
+            begin
+            temp_dd -= 28;
+            temp_mm += 1;  
+            end;
+        end
+
+    else if (temp_dd > 30) then 
+        begin
+        temp_dd -= 30;
+        temp_mm += 1;
+        end;
     end
 
 else
