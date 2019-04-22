@@ -25,26 +25,26 @@ type
 var 
     data : list;
 
-procedure input(a : list; i : integer);
+procedure input(i : integer);
 var
     temp : string;
     ec : integer;
 begin
-    a.neff += 1;
+    data.neff += 1;
     write('Masukan id buku: ');
-    readln(a.arr[i].id_buku_hilang);
+    readln(data.arr[i].id_buku_hilang);
     write('Masukan judul buku: ');
-    readln(a.arr[i].judul);
+    readln(data.arr[i].judul);
     write('Masukan tanggal pelaporan: ');
     readln(temp);
-    val(temp[1] +  temp[2], a.arr[i].tanggal_laporan.dd, ec);
-    val(temp[4] +  temp[5], a.arr[i].tanggal_laporan.mm, ec);
-    val(temp[7] +  temp[8] + temp[9] + temp[10], a.arr[i].tanggal_laporan.yyyy, ec);
+    val(temp[1] +  temp[2], data.arr[i].tanggal_laporan.dd, ec);
+    val(temp[4] +  temp[5], data.arr[i].tanggal_laporan.mm, ec);
+    val(temp[7] +  temp[8] + temp[9] + temp[10], data.arr[i].tanggal_laporan.yyyy, ec);
 end;
 
 begin
 data.neff := 0;
-input(data, 1);
+input(1);
 end.
 
 
