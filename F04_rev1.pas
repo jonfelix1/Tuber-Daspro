@@ -17,7 +17,6 @@ type
 
 var
     list_buku : array[1..nmax] of buku;
-    input_kategori : string;
 
 //Prosedur output
 
@@ -35,6 +34,7 @@ procedure caritahunterbit;
 var
     i, tahuna, result : integer;
     stop : boolean;
+    input_kategori : string;
 
 //Algoritma
 
@@ -68,7 +68,8 @@ while not(stop) do
         begin
         for i := 1 to nmax do 
             begin
-            if list_buku[i].tahun_terbit < tahuna then
+            if (list_buku[i].tahun_terbit < tahuna) and
+               (list_buku[i].tahun_terbit > 1) then
                 begin
                 print_buku(list_buku[i]);
                 result += 1;
@@ -110,7 +111,8 @@ while not(stop) do
         begin
             for i := 1 to nmax do 
                 begin
-                if list_buku[i].tahun_terbit <= tahuna then
+                if (list_buku[i].tahun_terbit <= tahuna) and
+                   (list_buku[i].tahun_terbit > 1) then
                     begin
                     print_buku(list_buku[i]);
                     result += 1;
@@ -147,4 +149,3 @@ with list_buku[2] do
 
 caritahunterbit;
 end.
-
