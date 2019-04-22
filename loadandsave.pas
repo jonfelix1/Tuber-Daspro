@@ -6,6 +6,7 @@ const maxData = 1000;
 type 
 
   arrayData = record
+    tab:array[1..maxData] of string;
     neff:integer;
     end;
 
