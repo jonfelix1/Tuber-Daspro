@@ -3,14 +3,14 @@ unit loadandsave;
 interface
 const maxData = 1000;
 
-type 
+type
 
   arrayData = record
     tab:array[1..maxData] of string;
     neff:integer;
     end;
 
-  astring = array[1..1000] of string; //menyimpan data sementara yang dipakai pada fungsi pecahString 
+  astring = array[1..1000] of string; //menyimpan data sementara yang dipakai pada fungsi pecahString
 
   tanggal = record
     DD, MM, YYYY : integer;
@@ -25,7 +25,7 @@ type
     tab:array[1..maxData] of Buku;
     neff:integer;
     end;
-  
+
 
   User = record
     Nama, Alamat, Username, Password : string;
@@ -48,7 +48,7 @@ type
     neff:integer;
     end;
 
-  
+
   History_Pengembalian = record
     Username : string;
     ID_Buku : integer;
@@ -78,7 +78,7 @@ type
   procedure save(namafile:string;data:arrayData);//menyimpan dari ke suatu file dengan format .csv
   procedure bacaTanggal(sTanggal:string;var tTanggal:tanggal);//mengubah tanggal dalam bentuk string menjadi bentuk tanggal(type bentukan)
   function gabungTanggal(t:tanggal):String;//mengembalikan tanggal yang dalam bentuk tanggal(type bentukan) menjadi bentuk string
-  
+
   //handleXXXXX mengubah data mentah yang dibaca fungsi load(); menjadi data yang lebih mudah diolah
   procedure handleBuku(databuku:arrayData;var data:arrBuku);
   procedure handleUser(datauser:arrayData;var data:arrUser);
@@ -106,30 +106,30 @@ begin
       inc(i);
       if buka then //memisah data yang diapit tanda ("...")
         begin
-          if line[i]='"' then 
+          if line[i]='"' then
             begin
-                if line[i+1]='"' then 
+                if line[i+1]='"' then
                     begin
                     destination[j]:=destination[j]+line[i];
                     Inc(i);
                     end
                 else
-                    buka:=False; 
+                    buka:=False;
             end
           else
             destination[j]:=destination[j]+line[i];
         end
       else //memisah data yang tidak diapit tanda("...")
         begin
-          if line[i]='"' then buka:=True 
-          else if line[i]<>splitBy then 
+          if line[i]='"' then buka:=True
+          else if line[i]<>splitBy then
             destination[j]:=destination[j]+line[i] else
             begin
               inc(j);
               destination[j]:='';
             end;
         end;
-   until i=Length(line); 
+   until i=Length(line);
 end;
 
 function IntToStr(bilangan:integer):String;
@@ -144,7 +144,7 @@ begin
   saveValidation:=''; //mengapit data dengan tanda ("...") jika didalam data terdapat (,) atau (")
   for i:=1 to Length(kalimat) do
     begin
-      if kalimat[i]='"' then saveValidation:=saveValidation+'"'; //menggandakan tanda (") 
+      if kalimat[i]='"' then saveValidation:=saveValidation+'"'; //menggandakan tanda (")
       if (kalimat[i]='"') or (kalimat[i]=',') then ada:=true;
       saveValidation:=saveValidation+kalimat[i];
     end;
@@ -173,13 +173,13 @@ var ch : string;
     i:integer;
  begin
    Assign(inFile,namafile);
-   Reset(inFile);  
-   i := 1; 
+   Reset(inFile);
+   i := 1;
    readln(inFile,ch); //menghilangkan row 1
    repeat
     readln(inFile, ch); //membaca setiap baris yang ada pada file
     dat.tab[i]:=ch;
-    inc(i); 
+    inc(i);
    until eof(inFile);
    dat.neff:=i-1;
    load:=dat;
@@ -290,7 +290,7 @@ function convertBuku(data:arrBuku):arrayData;
 var i:integer;
 begin
 convertBuku.neff:=data.neff;
-for i:=1 to data.neff do 
+for i:=1 to data.neff do
   //kembalikan data ke bentuk yang mudah disimpan ke dalam file
   convertBuku.tab[i]:=
         saveValidation(IntToStr(data.tab[i].ID_Buku))+','+
@@ -305,7 +305,7 @@ function convertUser(data:arrUser):arrayData;
 var i:integer;
 begin
 convertUser.neff:=data.neff;
-for i:=1 to data.neff do 
+for i:=1 to data.neff do
   //kembalikan data ke bentuk yang mudah disimpan ke dalam file
   convertUser.tab[i]:=
         saveValidation(data.tab[i].Nama)+','+
@@ -319,10 +319,10 @@ function convertPinjam(data:arrPinjam):arrayData;
 var i:integer;c:string;
 begin
 convertPinjam.neff:=data.neff;
-for i:=1 to data.neff do 
+for i:=1 to data.neff do
 if data.tab[i].Status_Pengembalian  then
   c:='True' //mengubah tipe data boolean menjadi string
-else 
+else
   c:='false';
   //kembalikan data ke bentuk yang mudah disimpan ke dalam file
   convertPinjam.tab[i]:=
@@ -336,7 +336,7 @@ function convertKembali(data:arrKembali):arrayData;
 var i:integer;
 begin
 convertKembali.neff:=data.neff;
-for i:=1 to data.neff do 
+for i:=1 to data.neff do
   //kembalikan data ke bentuk yang mudah disimpan ke dalam file
   convertKembali.tab[i]:=
         saveValidation(data.tab[i].Username)+','+
@@ -348,7 +348,7 @@ function convertHilang(data:arrHilang):arrayData;
 var i:integer;
 begin
 convertHilang.neff:=data.neff;
-for i:=1 to data.neff do 
+for i:=1 to data.neff do
   //kembalikan data ke bentuk yang mudah disimpan ke dalam file
   convertHilang.tab[i]:=
         saveValidation(data.tab[i].Username)+','+
