@@ -1,6 +1,6 @@
 program f07;
 
-//kamus
+//Kamus Global
 
 const
     nmax = 100;
@@ -24,10 +24,15 @@ type
 var 
     data : list;
 
+//Prosedurnya
+
 procedure input(i : integer);
+//Kamus Lokal
 var
     temp : string;
     ec : integer;
+
+//Algoritma
 begin
     data.neff += 1;
     write('Masukan id buku: ');
@@ -40,6 +45,8 @@ begin
     val(temp[4] +  temp[5], data.arr[i].tanggal_laporan.mm, ec);
     val(temp[7] +  temp[8] + temp[9] + temp[10], data.arr[i].tanggal_laporan.yyyy, ec);
 end;
+
+//Tes Jalan
 
 begin
 data.neff := 0;
