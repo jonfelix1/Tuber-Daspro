@@ -15,11 +15,6 @@ type
         jumlah_buku : integer;
     end;
 
-    d1 = record
-        arr : array[1..nmax] of buku;
-        neff : integer;
-    end;
-
 var
     list : array [1..nmax] of buku;
 
