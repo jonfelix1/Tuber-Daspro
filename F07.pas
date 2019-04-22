@@ -13,7 +13,6 @@ type
     laporan_hilang = record
         username : string;
         id_buku_hilang : integer;
-        judul : string;
         tanggal_laporan : tanggal;
     end;
 
@@ -34,7 +33,7 @@ begin
     write('Masukan id buku: ');
     readln(data.arr[i].id_buku_hilang);
     write('Masukan judul buku: ');
-    readln(data.arr[i].judul);
+    readln();
     write('Masukan tanggal pelaporan: ');
     readln(temp);
     val(temp[1] +  temp[2], data.arr[i].tanggal_laporan.dd, ec);
