@@ -34,15 +34,15 @@ procedure statistik(var data1: arrBuku, data2: arrUser);
     
     while j <= data1.neff do
         begin
-        if data1.arr[i].kategori = 'manga' then
+        if data1.arr[j].kategori = 'manga' then
             count_manga += 1
-        else if data1.arr[i].kategori = 'programming' then
+        else if data1.arr[j].kategori = 'programming' then
             count_programming += 1
-        else if data1.arr[i].kategori = 'sains' then
+        else if data1.arr[j].kategori = 'sains' then
             count_sains += 1
-        else if data1.arr[i].kategori = 'sastra' then
+        else if data1.arr[j].kategori = 'sastra' then
             count_sastra += 1
-        else if data1.arr[i].kategori = 'sejarah' then
+        else if data1.arr[j].kategori = 'sejarah' then
             count_sejarah += 1;
         j += 1;
         end;
