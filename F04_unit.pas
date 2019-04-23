@@ -1,8 +1,9 @@
-unit F04_unit   ;
+unit F04  ;
 interface
 
+uses loadandsave;
 procedure print_buku(var bukua: buku);
-procedure caritahunterbit;
+procedure caritahunterbit(list_buku: arrBuku);
 
 implementation
 
@@ -18,7 +19,7 @@ procedure caritahunterbit(list_buku: arrBuku);
 
 //Kamus lokal
 var
-    i, tahuna, result : integer;
+    i, tahuna, result,nmax : integer;
     stop : boolean;
     input_kategori : string;
 
@@ -27,6 +28,7 @@ var
 begin
 result := 0;
 stop := false;
+nmax:=list_buku.neff;
 
 while not(stop) do
     begin
@@ -38,11 +40,11 @@ while not(stop) do
     writeln('Buku yang terbit ', input_kategori, ' ', tahuna, ': ');
     if input_kategori = '=' then
         begin
-        for i := 1 to list_buku.neff do 
+        for i := 1 to nmax do 
             begin
-            if (list_buku[i].tahun_terbit = tahuna) then
+            if list_buku.tab[i].Tahun_Penerbit = tahuna then
                 begin
-                print_buku(list_buku[i]);
+                print_buku(list_buku.tab[i]);
                 result += 1;
                 end;
             end;
@@ -52,12 +54,12 @@ while not(stop) do
 
     else if input_kategori = '<' then
         begin
-        for i := 1 to list_buku.neff do 
+        for i := 1 to nmax do 
             begin
-            if (list_buku[i].tahun_terbit < tahuna) and
-               (list_buku[i].tahun_terbit > 1) then
+            if (list_buku.tab[i].Tahun_Penerbit < tahuna) and
+               (list_buku.tab[i].Tahun_Penerbit > 1) then
                 begin
-                print_buku(list_buku[i]);
+                print_buku(list_buku.tab[i]);
                 result += 1;
                 end;
             end;
@@ -67,11 +69,11 @@ while not(stop) do
 
     else if input_kategori = '>' then
         begin
-        for i := 1 to list_buku.neff do 
+        for i := 1 to nmax do 
             begin
-            if list_buku[i].tahun_terbit > tahuna then
+            if list_buku.tab[i].Tahun_Penerbit > tahuna then
                 begin
-                print_buku(list_buku[i]);
+                print_buku(list_buku.tab[i]);
                 result += 1;
                 end;
             end;
@@ -81,11 +83,11 @@ while not(stop) do
 
     else if input_kategori = '>=' then
         begin
-        for i := 1 to list_buku.neff do 
+        for i := 1 to nmax do 
             begin
-            if list_buku[i].tahun_terbit >= tahuna then
+            if list_buku.tab[i].Tahun_Penerbit >= tahuna then
                 begin
-                print_buku(list_buku[i]);
+                print_buku(list_buku.tab[i]);
                 result += 1;
                 end;
             end;
@@ -95,12 +97,12 @@ while not(stop) do
 
     else if input_kategori = '<=' then
         begin
-            for i := 1 to list_buku.neff do 
+            for i := 1 to nmax do 
                 begin
-                if (list_buku[i].tahun_terbit <= tahuna) and
-                   (list_buku[i].tahun_terbit > 1) then
+                if (list_buku.tab[i].Tahun_Penerbit <= tahuna) and
+                   (list_buku.tab[i].Tahun_Penerbit > 1) then
                     begin
-                    print_buku(list_buku[i]);
+                    print_buku(list_buku.tab[i]);
                     result += 1;
                     end;
                 end;
@@ -113,3 +115,4 @@ end;
 
 
 end.
+
