@@ -1,4 +1,4 @@
-program F06;
+program F06; // Pengembalian Buku
 uses sysutils;
 //Kamus Global
 
@@ -6,13 +6,10 @@ const
     nmax = 100;
 
 type
-    buku = record
-        id_buku: longint;
-        judul_buku : string;
-        author: string;
-        kategori: string;
-        tahun_terbit : integer;
-        jumlah_buku : integer;
+    History_Pengembalian = record
+    username : string;
+    id_buku : integer;
+    Tanggal_Pengembalian : tanggal;
     end;
 
     tanggal = record
@@ -28,14 +25,15 @@ type
     end;
 
     d1 = record
-        arr : array [1..nmax] of buku;
-        neff : integer;
+    arr : array[1..nmax] of history_peminjaman;
+    neff : integer;
     end;
 
     d3 = record
-        arr : array[1..nmax] of history_peminjaman;
+        arr : array [1..nmax] of History_Pengembalian;
         neff : integer;
     end;
+
 
 var
     data1 : d1;
@@ -43,7 +41,7 @@ var
 
 //Prosedurnya
 
-procedure pinjam_buku;
+procedure kembali_buku;
 //Kamus Lokal
 var
     stock, i, temp_id, ec, temp_dd, temp_mm, temp_yyyy: integer;
@@ -52,15 +50,14 @@ var
 
 //Algoritma
 begin
+
 write('Masukan id buku yang ingin dipinjam: ');
 readln(temp_id);
-write('Masukan tanggal hari ini: ');
-readln(temp_tanggal);
 
 i := 1;
 found := false;
 
-//Mencari data di buku.csv
+//Mencari data di history_peminjaman.csv
 while not(found) and (i <= data1.neff) do
     begin
     if data1.arr[i].id_buku = temp_id then
