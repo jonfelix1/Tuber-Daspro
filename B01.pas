@@ -11,12 +11,12 @@ function crypttool(var input: string): string;
         result : string;
     begin
         len := length(input);
-        if len > length(key) then
-            len := Length(key);
-        SetLength(result, len);
+        if length(input) > length(key) then
+            len := length(key);
+        setlength(result, len);
         for i := 1 to len do
             result[i] := chr(ord(input[i]) xor ord(key[i]));
-            crypttool := result
+            crypttool := result;
     end;
      
 begin
