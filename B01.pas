@@ -5,7 +5,7 @@ var
 
 function crypttool(var input: string): string;
     const
-        key = 'Nakano_Miku_is_the_best_girl';
+        key = 'Nakano_Miku_is_the_best_girl____hcnslwhqefwruyzcwjcsnypcspumdrxspjwyyxowanfzeinmhqykkrjfmeftwsnqvoqmlkxjtjzavrkzyxrdhvdiumdhszhegoehdjbrsnauvlpezbzrawxisgfeyrzpjqtxdnlvzjabexeskzjkxjldxfrxyimzcvyaozhbzyuifcjfnzischttbumxwhlzunamfwwigaznsjxeayosxdwsbeqjyce';
     var
         i, len: integer;
         result : string;
