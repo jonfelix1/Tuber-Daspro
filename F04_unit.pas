@@ -38,7 +38,7 @@ while not(stop) do
     writeln('Buku yang terbit ', input_kategori, ' ', tahuna, ': ');
     if input_kategori = '=' then
         begin
-        for i := 1 to nmax do 
+        for i := 1 to list_buku.neff do 
             begin
             if (list_buku[i].tahun_terbit = tahuna) then
                 begin
@@ -52,7 +52,7 @@ while not(stop) do
 
     else if input_kategori = '<' then
         begin
-        for i := 1 to nmax do 
+        for i := 1 to list_buku.neff do 
             begin
             if (list_buku[i].tahun_terbit < tahuna) and
                (list_buku[i].tahun_terbit > 1) then
@@ -67,7 +67,7 @@ while not(stop) do
 
     else if input_kategori = '>' then
         begin
-        for i := 1 to nmax do 
+        for i := 1 to list_buku.neff do 
             begin
             if list_buku[i].tahun_terbit > tahuna then
                 begin
@@ -81,7 +81,7 @@ while not(stop) do
 
     else if input_kategori = '>=' then
         begin
-        for i := 1 to nmax do 
+        for i := 1 to list_buku.neff do 
             begin
             if list_buku[i].tahun_terbit >= tahuna then
                 begin
@@ -95,7 +95,7 @@ while not(stop) do
 
     else if input_kategori = '<=' then
         begin
-            for i := 1 to nmax do 
+            for i := 1 to list_buku.neff do 
                 begin
                 if (list_buku[i].tahun_terbit <= tahuna) and
                    (list_buku[i].tahun_terbit > 1) then
