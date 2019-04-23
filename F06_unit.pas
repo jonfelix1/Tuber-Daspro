@@ -26,12 +26,12 @@ procedure kembali_buku(var data1: arrBuku, data3: arrPinjam, data4: arrKembali, 
     //Mencari data di history_peminjaman.csv
     while not(found) and (i <= data3.neff) do
         begin
-        if (data3.arr[i].id_buku = temp_id) and (data3.arr[i].username = current_user.username) then
+        if (data3.tab[i].id_buku = temp_id) and (data3.tab[i].username = current_user.username) then
             begin
             found := true;
             while not(found1) and (j <= data1.neff) do
                 begin
-                if temp_id = data1.arr[j].id_buku then
+                if temp_id = data1.tab[j].id_buku then
                     found1 := true
                 else j += 1;
                 end;
@@ -44,16 +44,16 @@ procedure kembali_buku(var data1: arrBuku, data3: arrPinjam, data4: arrKembali, 
     else 
         begin
         data4.neff += 1;
-        data4.arr[data4.neff].username := current_user.username;
-        data4.arr[data4.neff].id_buku := temp_id;
+        data4.tab[data4.neff].username := current_user.username;
+        data4.tab[data4.neff].id_buku := temp_id;
 
-        data1.arr[i].jumlah_buku += 1;
+        data1.tab[i].jumlah_buku += 1;
 
         writeln('Data peminjaman:');
-        writeln('Username :' + data3.arr[i].username);
-        writeln('Judul buku: ' + data1.arr[j].judul_buku);
-        writeln('Tanggal peminjaman: ' , data3.arr[i].tanggal_peminjaman.dd , '/' , data3.arr[i].tanggal_peminjaman.mm , '/' , data3.arr[i].tanggal_peminjaman.yyyy);
-        writeln('Tanggal batas pengembalian: ' , data3.arr[i].tanggal_batas_pengembalian.dd , '/' , data3.arr[i].tanggal_batas_pengembalian.mm , '/' , data3.arr[i].tanggal_batas_pengembalian.yyyy);
+        writeln('Username :' + data3.tab[i].username);
+        writeln('Judul buku: ' + data1.tab[j].judul_buku);
+        writeln('Tanggal peminjaman: ' , data3.tab[i].tanggal_peminjaman.dd , '/' , data3.tab[i].tanggal_peminjaman.mm , '/' , data3.tab[i].tanggal_peminjaman.yyyy);
+        writeln('Tanggal batas pengembalian: ' , data3.tab[i].tanggal_batas_pengembalian.dd , '/' , data3.tab[i].tanggal_batas_pengembalian.mm , '/' , data3.tab[i].tanggal_batas_pengembalian.yyyy);
 
         writeln('Masukan tanggal hari ini: ');
         readln(temp_tanggal);
@@ -61,9 +61,9 @@ procedure kembali_buku(var data1: arrBuku, data3: arrPinjam, data4: arrKembali, 
         val(temp_tanggal[4] +  temp_tanggal[5], temp_mm, ec);
         val(temp_tanggal[7] +  temp_tanggal[8] + temp_tanggal[9] + temp_tanggal[10], temp_yyyy, ec);
 
-        if ((temp_dd > data3.arr[i].tanggal_batas_pengembalian.dd) and (temp_mm = data3.arr[i].tanggal_batas_pengembalian.mm) and (temp_yyyy = data3.arr[i].tanggal_batas_pengembalian.yyyy)) or
-           ((temp_mm > data3.arr[i].tanggal_batas_pengembalian.mm) and (temp_yyyy = data3.arr[i].tanggal_batas_pengembalian.yyyy)) or
-           (temp_yyyy > data3.arr[i].tanggal_batas_pengembalian.yyyy) then
+        if ((temp_dd > data3.tab[i].tanggal_batas_pengembalian.dd) and (temp_mm = data3.tab[i].tanggal_batas_pengembalian.mm) and (temp_yyyy = data3.tab[i].tanggal_batas_pengembalian.yyyy)) or
+           ((temp_mm > data3.tab[i].tanggal_batas_pengembalian.mm) and (temp_yyyy = data3.tab[i].tanggal_batas_pengembalian.yyyy)) or
+           (temp_yyyy > data3.tab[i].tanggal_batas_pengembalian.yyyy) then
             writeln ('Anda terlambat mengembalikan buku')
         else writeln('Terimakasih sudah meminjam');
         end;
