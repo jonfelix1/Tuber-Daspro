@@ -40,7 +40,7 @@ while not(stop) do
         begin
         for i := 1 to nmax do 
             begin
-            if list_buku[i].tahun_terbit = tahuna then
+            if (list_buku[i].tahun_terbit = tahuna) then
                 begin
                 print_buku(list_buku[i]);
                 result += 1;
