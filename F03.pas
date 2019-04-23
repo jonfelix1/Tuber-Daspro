@@ -94,20 +94,23 @@ while not(stop) do
     i_out -= 1;
     i := 1;
     
-    repeat
+    if result > 1 then
         begin
-        tmp := list_output[i].judul_buku;
-        tmp2 := list_output[i+1].judul_buku;
-        if tmp > tmp2 then
+        repeat
             begin
-            tmp3 := list_output[i];
-            list_output[i] := list_output[i+1];
-            list_output[i+1] := tmp3;
-            i := -1;
-            end;
-        i += 1;
-        end
-    until i = i_out;
+            tmp := list_output[i].judul_buku;
+            tmp2 := list_output[i+1].judul_buku;
+            if tmp > tmp2 then
+                begin
+                tmp3 := list_output[i];
+                list_output[i] := list_output[i+1];
+                list_output[i+1] := tmp3;
+                i := 0;
+                end;
+            i += 1;
+            end
+        until i = i_out;
+        end;
 
     if result = 0 then 
         begin
@@ -139,7 +142,7 @@ with list[3] do
     tahun_terbit := 2010;
     end;
 
-with list[2] do
+with list[5] do
     begin
     id_buku := 6573;
     judul_buku := 'Learning Java';
@@ -165,6 +168,35 @@ with list[4] do
     kategori := 'programming';
     tahun_terbit := 2010;
     end;
+
+with list[2] do
+    begin
+    id_buku := 7546;
+    judul_buku := 'aku';
+    author := 'bukan';
+    kategori := 'sastra';
+    tahun_terbit := 2010;
+    end;
+
+with list[6] do
+    begin
+    id_buku := 754656;
+    judul_buku := 'aku';
+    author := 'bukan';
+    kategori := 'manga';
+    tahun_terbit := 2010;
+    end;
+
+with list[7] do
+    begin
+    id_buku := 7546;
+    judul_buku := 'kamu';
+    author := 'tidak';
+    kategori := 'sastra';
+    tahun_terbit := 2010;
+    end;
+
+
 
 cari;
 

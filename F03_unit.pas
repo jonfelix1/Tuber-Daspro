@@ -52,21 +52,24 @@ while not(stop) do
 
     i_out -= 1;
     i := 1;
-
-    repeat
+    
+    if result > 1 then
         begin
-        tmp := list_output[i].judul_buku;
-        tmp2 := list_output[i+1].judul_buku;
-        if tmp > tmp2 then
+        repeat
             begin
-            tmp3 := list_output[i];
-            list_output[i] := list_output[i+1];
-            list_output[i+1] := tmp3;
-            i := -1;
-            end;
-        i += 1;
-        end
-    until i = i_out;
+            tmp := list_output[i].judul_buku;
+            tmp2 := list_output[i+1].judul_buku;
+            if tmp > tmp2 then
+                begin
+                tmp3 := list_output[i];
+                list_output[i] := list_output[i+1];
+                list_output[i+1] := tmp3;
+                i := 0;
+                end;
+            i += 1;
+            end
+        until i = i_out;
+        end;
 
     if result = 0 then 
         begin
@@ -84,5 +87,3 @@ while not(stop) do
     end;
 
 end;
-
-end.
