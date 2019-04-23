@@ -5,7 +5,7 @@ uses sysutils;
 const
     nmax = 100;
 
-type 
+type
     buku = record
         id_buku: longint;
         judul_buku : string;
@@ -37,7 +37,7 @@ type
         neff : integer;
     end;
 
-var 
+var
     data1 : d1;
     data3 : d3;
 
@@ -61,7 +61,7 @@ i := 1;
 found := false;
 
 //Mencari data di buku.csv
-while not(found) and (i <= data1.neff) do 
+while not(found) and (i <= data1.neff) do
     begin
     if data1.arr[i].id_buku = temp_id then
         begin
@@ -121,16 +121,16 @@ if stock > 0 then
         else if temp_dd > 28 then
             begin
             temp_dd -= 28;
-            temp_mm += 1;  
+            temp_mm += 1;
             end;
         end
 
-    else if (temp_dd > 30) then 
+    else if (temp_dd > 30) then
         begin
         temp_dd -= 30;
         temp_mm += 1;
         end;
-    
+
     data3.arr[data3.neff].tanggal_batas_pengembalian.dd := temp_dd;
     data3.arr[data3.neff].tanggal_batas_pengembalian.mm := temp_mm;
     data3.arr[data3.neff].tanggal_batas_pengembalian.yyyy := temp_yyyy;
@@ -155,7 +155,7 @@ with data1.arr[1] do
     tahun_terbit := 2010;
     jumlah_buku := 0
     end;
-    
+
 with data1.arr[2] do
     begin
     id_buku := 2356;
