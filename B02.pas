@@ -15,6 +15,7 @@ procedure denda(var tanggal_pinjam, tanggal_kembali: tanggal);
     selisih_day := 0;
     repeat
       begin
+        selisih_day := selisih_day + 1;
         temp_dd := temp_dd + 1;
 
         if  ((temp_mm = 1) or
