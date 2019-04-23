@@ -2,6 +2,10 @@ unit F05_unit;
 interface
 
 procedure pinjam_buku(var data1: arrBuku, data3: arrPinjam, current_user : user);
+
+implementation
+
+procedure pinjam_buku(var data1: arrBuku, data3: arrPinjam, current_user : user);
 //Kamus Lokal
 var
     stock, i, temp_id, ec, temp_dd, temp_mm, temp_yyyy: integer;
