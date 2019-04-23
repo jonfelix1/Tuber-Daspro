@@ -71,7 +71,7 @@ procedure kembali_buku;
     var
         stock, i, j, temp_id, ec, temp_dd, temp_mm, temp_yyyy: integer;
         found, found1 : boolean;
-        temp_tanggal, judul_buku : string;
+        temp_tanggal : string;
 
     //Algoritma
     begin
@@ -108,6 +108,8 @@ procedure kembali_buku;
         data4.arr[data4.neff].username := current_user.username;
         data4.arr[data4.neff].id_buku := temp_id;
 
+        data1.arr[i].jumlah_buku += 1;
+
         writeln('Data peminjaman:');
         writeln('Username :' + data3.arr[i].username);
         writeln('Judul buku: ' + data1.arr[j].judul_buku);
@@ -115,8 +117,16 @@ procedure kembali_buku;
         writeln('Tanggal batas pengembalian: ' , data3.arr[i].tanggal_batas_pengembalian.dd , '/' , data3.arr[i].tanggal_batas_pengembalian.mm , '/' , data3.arr[i].tanggal_batas_pengembalian.yyyy);
 
         writeln('Masukan tanggal hari ini: ');
-        readln(temp_tanggal)
-        //fungsi telat belom
+        readln(temp_tanggal);
+        val(temp_tanggal[1] +  temp_tanggal[2], temp_dd, ec);
+        val(temp_tanggal[4] +  temp_tanggal[5], temp_mm, ec);
+        val(temp_tanggal[7] +  temp_tanggal[8] + temp_tanggal[9] + temp_tanggal[10], temp_yyyy, ec);
+
+        if ((temp_dd > data3.arr[i].tanggal_batas_pengembalian.dd) and (temp_mm = data3.arr[i].tanggal_batas_pengembalian.mm) and (temp_yyyy = data3.arr[i].tanggal_batas_pengembalian.yyyy)) or
+           ((temp_mm > data3.arr[i].tanggal_batas_pengembalian.mm) and (temp_yyyy = data3.arr[i].tanggal_batas_pengembalian.yyyy)) or
+           (temp_yyyy > data3.arr[i].tanggal_batas_pengembalian.yyyy) then
+            writeln ('Anda terlambat mengembalikan buku')
+        else writeln('Terimakasih sudah meminjam');
         end;
     end;
 
